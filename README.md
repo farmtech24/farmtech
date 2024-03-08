@@ -5,7 +5,7 @@ Este proyecto tiene como objetivo desarrollar una aplicación móvil con un back
 ## Características
 
 - **Registro de Producciones**: Los usuarios pueden registrar las producciones de leche de sus vacas en un formato similar a Excel.
-- **Gestión de Inventario**: Permite a los usuarios administrar inventarios relacionados con la producción de leche.
+- **Gestión de Inventario**: Permite a los usuarios administrar inventarios de su ganado, esto incluye el manejo de diversos lotes.
 - **Registros Sanitarios**: Funcionalidad para mantener registros sanitarios de las vacas.
 - **Registro de Vacas**: Permite a los usuarios registrar todas sus vacas con detalles específicos.
 - **Perfil de Usuario**: Los usuarios pueden crear y gestionar sus perfiles en la aplicación.
