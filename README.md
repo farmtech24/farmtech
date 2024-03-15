@@ -12,6 +12,7 @@ Este proyecto tiene como objetivo desarrollar una aplicación móvil con un back
 - **Sistema de Autenticación**: Implementación de un sistema de inicio de sesión seguro.
 - **Método de Pago**: Integración de un método de pago para posibles transacciones.
 - **Gráficos de Análisis**: Funcionalidades para analizar y visualizar los datos de producción.
+- **Estructura de costos y plan de produccion**: Permite realizar un plan de inversion u/o costos, y establecer un plan de ventas u/o produccion.
 
 ## Estructura del Proyecto
 
