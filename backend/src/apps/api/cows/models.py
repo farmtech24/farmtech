@@ -1,7 +1,9 @@
 from django.db import models
 
-class Cow(models.Model):
+class CowManager(models.Manager):
+    pass
 
+class Cow(models.Model):
     # Campos para registrar las vacas
     CATEGORY_CHOICES = [
         ('crianza', 'Crianza'),
@@ -19,8 +21,11 @@ class Cow(models.Model):
     # Agregar campos adicionales
     additional_fields = models.JSONField(blank=True, null=True)
 
-     # Permite agregar una foto de la vaca
+    # Permite agregar una foto de la vaca
     photo = models.ImageField(upload_to='cow_photos/', blank=True, null=True)
+
+    # Default manager
+    objects = CowManager()
 
     def __str__(self):
         return self.nombre
