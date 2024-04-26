@@ -60,10 +60,16 @@ class MainApp(App):
         layout = BoxLayout(orientation='vertical')
 
         # Menu
-        menu_layout = GridLayout(cols=5, size_hint_y=None, height=50)
-        menu_layout.add_widget(Button(text='Fincas', on_release=lambda x: sm.current_screen(name='ranchs')))
-        menu_layout.add_widget(Button(text='Estructura de costos', on_release=lambda x: sm.current_screen(name='Cost Structure')))
-        menu_layout.add_widget(Button(text='Plan de produccion', on_release=lambda x: sm.current_screen(name='Production Plan')))
+        menu_layout = GridLayout(cols=5, size_hint_y=None, height=50, spacing=10)  # Add spacing between buttons
+        menu_layout.add_widget(Button(text='Fincas', on_release=lambda x: sm.current_screen(name='ranchs'),
+                                       background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
+                                       font_size='14sp'))  # Adjust font size
+        menu_layout.add_widget(Button(text='Estructura de costos', on_release=lambda x: sm.current_screen(name='Cost Structure'),
+                                       background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
+                                       font_size='14sp'))  # Adjust font size
+        menu_layout.add_widget(Button(text='Plan de produccion', on_release=lambda x: sm.current_screen(name='Production Plan'),
+                                       background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
+                                       font_size='14sp'))  # Adjust font size
 
         # Content area
         content_layout = AnchorLayout(anchor_x='center', anchor_y='center')
