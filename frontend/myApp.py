@@ -52,9 +52,7 @@ class MainApp(App):
 
         # Screen manager
         sm = ScreenManager()
-        sm.add_widget(MainScreen(name='main'))
-        sm.add_widget(CowScreen(name='cow'))
-        sm.add_widget(MilkProductionScreen(name='milk_production'))
+        sm.add_widget(MilkProductionScreen(name='ranchs'))
         sm.add_widget(CostStructureScreen(name='cost_structure'))
         sm.add_widget(ProductionPlanScreen(name='production_plan'))
 
@@ -63,17 +61,15 @@ class MainApp(App):
 
         # Menu
         menu_layout = GridLayout(cols=5, size_hint_y=None, height=50)
-        menu_layout.add_widget(Button(text='Main', on_release=lambda x: sm.current_screen(name='main')))
-        menu_layout.add_widget(Button(text='Cows', on_release=lambda x: sm.current_screen(name='cow')))
-        menu_layout.add_widget(Button(text='Milk Production', on_release=lambda x: sm.current_screen(name='milk_production')))
-        menu_layout.add_widget(Button(text='Cost Structure', on_release=lambda x: sm.current_screen(name='cost_structure')))
-        menu_layout.add_widget(Button(text='Production Plan', on_release=lambda x: sm.current_screen(name='production_plan')))
+        menu_layout.add_widget(Button(text='Fincas', on_release=lambda x: sm.current_screen(name='ranchs')))
+        menu_layout.add_widget(Button(text='Estructura de costos', on_release=lambda x: sm.current_screen(name='Cost Structure')))
+        menu_layout.add_widget(Button(text='Plan de produccion', on_release=lambda x: sm.current_screen(name='Production Plan')))
 
         # Content area
         content_layout = AnchorLayout(anchor_x='center', anchor_y='center')
 
         # Milk button
-        milk_button = CircleButton(source='frontend/milk.avif', size_hint=(None, None), size=(dp(100), dp(100)))
+        milk_button = CircleButton(source='frontend/milk.jpg', size_hint=(None, None), size=(dp(100), dp(100)))
         milk_button.bind(on_release=lambda x: self.open_module('Milk Production'))
         content_layout.add_widget(milk_button)
 
