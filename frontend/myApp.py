@@ -6,10 +6,10 @@ from kivy.uix.label import Label
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.config import Config
 from kivy.uix.behaviors import ButtonBehavior
-from kivy.uix.image import Image
 from kivy.metrics import dp
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.core.window import Window
+from kivy.uix.image import Image
 
 
 class MainScreen(Screen):
@@ -32,11 +32,8 @@ class ProductionPlanScreen(Screen):
     pass
 
 
-class CircleButton(ButtonBehavior, Image):
-    def __init__(self, **kwargs):
-        super(CircleButton, self).__init__(**kwargs)
-        self.color = (0, 0, 0, 1)  # Set the color of the image to black
-        self.allow_stretch = True  # Allow stretching the image to fit the button
+class CircleButton(ButtonBehavior, Label):
+    pass
 
 
 class MainApp(App):
@@ -62,22 +59,34 @@ class MainApp(App):
         # Menu
         menu_layout = GridLayout(cols=5, size_hint_y=None, height=50, spacing=10)  # Add spacing between buttons
         menu_layout.add_widget(Button(text='Fincas', on_release=lambda x: sm.current_screen(name='ranchs'),
-                                       background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
-                                       font_size='14sp'))  # Adjust font size
-        menu_layout.add_widget(Button(text='Estructura de costos', on_release=lambda x: sm.current_screen(name='Cost Structure'),
-                                       background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
-                                       font_size='14sp'))  # Adjust font size
-        menu_layout.add_widget(Button(text='Plan de produccion', on_release=lambda x: sm.current_screen(name='Production Plan'),
-                                       background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
-                                       font_size='14sp'))  # Adjust font size
+                                      background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
+                                      font_size='14sp'))  # Adjust font size
+        menu_layout.add_widget(
+            Button(text='Estructura de costos', on_release=lambda x: sm.current_screen(name='Cost Structure'),
+                   background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
+                   font_size='13sp'))  # Adjust font size
+        menu_layout.add_widget(
+            Button(text='Plan de produccion', on_release=lambda x: sm.current_screen(name='Production Plan'),
+                   background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
+                   font_size='14sp'))  # Adjust font size
 
         # Content area
         content_layout = AnchorLayout(anchor_x='center', anchor_y='center')
 
-        # Milk button
-        milk_button = CircleButton(source='frontend/milk.jpg', size_hint=(None, None), size=(dp(100), dp(100)))
-        milk_button.bind(on_release=lambda x: self.open_module('Milk Production'))
-        content_layout.add_widget(milk_button)
+        # Background image
+        background_image = Image(source='frontend/milk.jpg', allow_stretch=True, keep_ratio=False)
+        content_layout.add_widget(background_image)
+
+        # Adding two buttons
+        buttons_layout = GridLayout(cols=1, spacing=10, size_hint=(None, None), width=200, height=100)
+        buttons_layout.add_widget(
+            Button(text='Registros de Leche', on_release=lambda x: self.open_module('Registros de Leche'),
+                   size_hint=(None, None), width=180, height=40))
+        buttons_layout.add_widget(
+            Button(text='Manejo de Inventarios', on_release=lambda x: self.open_module('Manejo de Inventarios'),
+                   size_hint=(None, None), width=180, height=40))
+
+        content_layout.add_widget(buttons_layout)
 
         layout.add_widget(menu_layout)
         layout.add_widget(content_layout)
