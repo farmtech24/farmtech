@@ -44,7 +44,7 @@ class MainApp(App):
         Config.write()
 
         # Set window background color and text color
-        Window.clearcolor = (1, 1, 1, 1)  # Set background color to white
+        Window.clearcolor = (0.9, 0.9, 0.9, 1)  # Set background color to light gray
         Window.color = (0, 0, 0, 1)  # Set text color to black
 
         # Screen manager
@@ -58,13 +58,9 @@ class MainApp(App):
 
         # Menu
         menu_layout = GridLayout(cols=5, size_hint_y=None, height=50, spacing=10)  # Add spacing between buttons
-        menu_layout.add_widget(Button(text='Fincas', on_release=lambda x: sm.current_screen(name='ranchs'),
+        menu_layout.add_widget(Button(text='Estructura de costos', on_release=lambda x: sm.current_screen(name='Cost Structure'),
                                       background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
-                                      font_size='14sp'))  # Adjust font size
-        menu_layout.add_widget(
-            Button(text='Estructura de costos', on_release=lambda x: sm.current_screen(name='Cost Structure'),
-                   background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
-                   font_size='13sp'))  # Adjust font size
+                                      font_size='13sp'))  # Adjust font size
         menu_layout.add_widget(
             Button(text='Plan de produccion', on_release=lambda x: sm.current_screen(name='Production Plan'),
                    background_color=(0.6, 0.8, 1, 1),  # Set background color to light blue
@@ -77,14 +73,13 @@ class MainApp(App):
         background_image = Image(source='frontend/milk.jpg', allow_stretch=True, keep_ratio=False)
         content_layout.add_widget(background_image)
 
-        # Adding two buttons
-        buttons_layout = GridLayout(cols=1, spacing=10, size_hint=(None, None), width=200, height=100)
-        buttons_layout.add_widget(
-            Button(text='Registros de Leche', on_release=lambda x: self.open_module('Registros de Leche'),
-                   size_hint=(None, None), width=180, height=40))
-        buttons_layout.add_widget(
-            Button(text='Manejo de Inventarios', on_release=lambda x: self.open_module('Manejo de Inventarios'),
-                   size_hint=(None, None), width=180, height=40))
+        # Adding buttons
+        buttons_layout = BoxLayout(orientation='vertical', spacing=10, size_hint=(None, None), width=200, height=300)
+        options = ['Fincas', 'Perfil', 'Registro de Leche', 'Manejo de Inventarios', 'Suscripciones', 'Notas', 'Ayuda']
+        for option in options:
+            buttons_layout.add_widget(
+                Button(text=option, on_release=lambda x, option=option: self.open_module(option),
+                       size_hint=(None, None), width=180, height=40))
 
         content_layout.add_widget(buttons_layout)
 
